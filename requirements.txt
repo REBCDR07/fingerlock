@@ -1,0 +1,21 @@
+# =============================================================================
+# requirements.txt – FaceLock
+# =============================================================================
+# Installez via : pip install -r requirements.txt
+# Ou utilisez  : python scripts/install_deps.py
+# =============================================================================
+
+# Traitement image & caméra
+opencv-python>=4.5.0
+
+# Détection de visage en temps réel (Google MediaPipe)
+mediapipe>=0.8.0
+
+# Reconnaissance faciale (embeddings 128-d via dlib)
+face_recognition>=1.3.0
+
+# Opérations sur les tableaux (embeddings numpy)
+numpy>=1.20.0
+
+# Fichier de configuration YAML
+PyYAML>=5.4.0

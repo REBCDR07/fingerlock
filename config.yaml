@@ -1,0 +1,43 @@
+# =============================================================================
+# config.yaml – Configuration de FingerLock
+# =============================================================================
+# Editez ce fichier pour personnaliser le comportement de l'application.
+# Les arguments CLI ont la priorité sur ces valeurs.
+# =============================================================================
+
+# Index de la webcam à utiliser (0 = première webcam détectée)
+camera_id: 0
+
+# Distance euclidienne maximale pour considérer un visage comme le propriétaire.
+# Valeurs suggérées :
+#   0.45 – très strict (peu de faux positifs, risque de non-reconnaissance)
+#   0.50 – strict (bon équilibre sécurité / confort)
+#   0.60 – par défaut (bon équilibre général)
+#   0.70 – permissif (risque de reconnaissance de visages similaires)
+recognition_threshold: 0.60
+
+# Nombre de secondes après la disparition du visage avant le verrouillage.
+# Minimum : 1. Valeur suggérée : 3–10 selon votre environnement.
+lock_delay_seconds: 10
+
+# Chemin vers le fichier d'embedding du propriétaire (généré par `enroll`)
+# ⚠️  Ne partagez jamais ce fichier – il contient votre empreinte faciale.
+embedding_path: data/owner_embedding.npy
+
+# Chemin vers le fichier de logs
+log_path: logs/facelock.log
+
+# Plateforme de verrouillage :
+#   "auto"    – détection automatique (recommandé)
+#   "windows" – forcer Windows
+#   "macos"   – forcer macOS
+#   "linux"   – forcer Linux
+platform_lock: auto
+
+# Confiance minimale de MediaPipe pour la détection de visage (0.0 – 1.0)
+# Plus bas = plus sensible mais plus de faux positifs
+mediapipe_confidence: 0.5
+
+# Nombre de frames captées lors de l'enrôlement (pour moyenner l'embedding)
+# Plus grand = embedding plus robuste, enrôlement plus long
+capture_count: 10

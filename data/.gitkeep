@@ -1,0 +1,2 @@
+# Ce répertoire stocke les embeddings faciaux.
+# ⚠️  Ne jamais commiter owner_embedding.npy – données biométriques sensibles !
