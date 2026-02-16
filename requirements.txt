@@ -1,5 +1,5 @@
 # =============================================================================
-# requirements.txt – FaceLock
+# requirements.txt – FingerLock
 # =============================================================================
 # Installez via : pip install -r requirements.txt
 # Ou utilisez  : python scripts/install_deps.py
