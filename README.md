@@ -62,7 +62,7 @@ fingerlock
 
 ### Installation avec pip
 ```bash
-pip install git+https://github.com/REBCDR07/fingerlock.git
+pipx install git+https://github.com/REBCDR07/fingerlock.git
 fingerlock
 ```
 
