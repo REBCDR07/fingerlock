@@ -1,72 +1,76 @@
 ```
- _____ _                       _                _    
-|  ___(_)_ __   __ _  ___ _ __| |    ___   ___| | __
-| |_  | | '_ \ / _` |/ _ \ '__| |   / _ \ / __| |/ /
-|  _| | | | | | (_| |  __/ |  | |__| (_) | (__|   < 
-|_|   |_|_| |_|\__, |\___|_|  |_____\___/ \___|_|\_\
-               |___/                                 
+  ███████╗██╗███╗   ██╗ ██████╗ ███████╗██████╗     ██╗      ██████╗  ██████╗██╗  ██╗
+  ██╔════╝██║████╗  ██║██╔════╝ ██╔════╝██╔══██╗    ██║     ██╔═══██╗██╔════╝██║ ██╔╝
+  █████╗  ██║██╔██╗ ██║██║  ███╗█████╗  ██████╔╝    ██║     ██║   ██║██║     █████╔╝ 
+  ██╔══╝  ██║██║╚██╗██║██║   ██║██╔══╝  ██╔══██╗    ██║     ██║   ██║██║     ██╔═██╗ 
+  ██║     ██║██║ ╚████║╚██████╔╝███████╗██║  ██║    ███████╗╚██████╔╝╚██████╗██║  ██╗
+  ╚═╝     ╚═╝╚═╝  ╚═══╝ ╚═════╝ ╚══════╝╚═╝  ╚═╝    ╚══════╝ ╚═════╝  ╚═════╝╚═╝  ╚═╝
 ```
 
-# FingerLock 🔒
+# 🔐 FingerLock
 
-**Sécurité automatique par détection d'activité clavier/souris**
+**Système de verrouillage intelligent par schéma tactile + détection d'activité**
 
-FingerLock verrouille automatiquement votre ordinateur après une période d'inactivité, détectée via votre clavier et votre souris. Plus besoin de verrouiller manuellement votre PC quand vous partez !
+Sécurisez votre ordinateur avec un **lock screen plein écran** stylé et un déverrouillage par **schéma 3×3** (style Android). FingerLock surveille votre activité clavier/souris et verrouille automatiquement après inactivité.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
-[![Platform: Linux | macOS | Windows](https://img.shields.io/badge/platform-Linux%20%7C%20macOS%20%7C%20Windows-lightgrey)]()
+[![PyPI](https://img.shields.io/badge/PyPI-fingerlock-blue)](https://pypi.org/project/fingerlock/)
 
 ---
 
 ## ✨ Fonctionnalités
 
-- ⌨️ **Détection clavier** — Chaque touche réinitialise le timer
-- 🖱️ **Détection souris** — Mouvements et clics gardent le système actif
-- 🔒 **Verrouillage automatique** — Lock après X secondes d'inactivité
-- ⚡ **Ultra-léger** — Consommation CPU/RAM minimale
-- 🎯 **Multi-plateforme** — Linux, macOS, Windows
-- 📊 **Logs détaillés** — Historique complet des événements
-- ⚙️ **Configuration simple** — Setup interactif au premier lancement
+### 🎨 Lock Screen Premium
+- 🌈 **Écran plein** avec dégradé animé
+- ⏰ **Horloge en temps réel**
+- 🎯 **Grille 3×3** numérotée (1-9, style Android)
+- ✨ **Animations fluides** (points pulse, lignes progressives)
+- 🔊 **Sons subtils** (bips sur points, erreur, succès)
+- 🖱️ **Tracé sans clic** — glissez simplement la souris
+- ✅ **Zone de validation** intuitive
+
+### 🔒 Sécurité Automatique
+- ⌨️ **Détection clavier** via `evdev` (compatible Wayland)
+- 🖱️ **Détection souris** native Linux
+- ⏱️ **Délai configurable** (10s, 30s, 60s...)
+- 🔐 **Schéma personnel** stocké hashé (SHA-256)
+- 🚀 **Ultra-léger** — ~10MB RAM, 0% CPU idle
+
+### 📊 Suivi & Logs
+- 📝 Logs détaillés dans `~/.fingerlock/fingerlock.log`
+- 🎯 Compteur d'events en temps réel
+- 📈 Historique des verrouillages
 
 ---
 
-## 🚀 Installation Rapide
+## 🚀 Installation (2 commandes)
 
-### Prérequis
-
-- Python 3.8 ou supérieur
-- pip ou pipx
-
-### Installation avec pipx (recommandé)
+### Linux (Ubuntu/Debian)
 ```bash
-# 1. Installer pipx (si pas déjà fait)
-# Ubuntu/Debian
-sudo apt install pipx
-pipx ensurepath
-
-# macOS
-brew install pipx
-pipx ensurepath
-
-# Windows
-pip install pipx
-pipx ensurepath
+# 1. Installer pipx
+sudo apt install pipx && pipx ensurepath && source ~/.bashrc
 
 # 2. Installer FingerLock
-pipx install git+https://github.com/REBCDR07/fingerlock.git
+pipx install fingerlock
 
 # 3. Lancer
 fingerlock
 ```
 
-### Installation avec pip
+### Autres distributions Linux
 ```bash
-pipx install git+https://github.com/REBCDR07/fingerlock.git
-fingerlock
+# Fedora/RHEL
+sudo dnf install pipx && pipx ensurepath
+
+# Arch
+sudo pacman -S python-pipx && pipx ensurepath
+
+# Puis
+pipx install fingerlock && fingerlock
 ```
 
-### Installation depuis les sources
+### Installation depuis le code source
 ```bash
 git clone https://github.com/REBCDR07/fingerlock.git
 cd fingerlock
@@ -76,155 +80,195 @@ fingerlock
 
 ---
 
-## 📖 Utilisation
+## 📖 Premier lancement
 
-### Premier lancement
+Au démarrage, **deux écrans plein** s'affichent :
 
-Au premier démarrage, FingerLock vous demande la configuration :
-```bash
-$ fingerlock
-
- _____ _                       _                _    
-|  ___(_)_ __   __ _  ___ _ __| |    ___   ___| | __
-| |_  | | '_ \ / _` |/ _ \ '__| |   / _ \ / __| |/ /
-|  _| | | | | | (_| |  __/ |  | |__| (_) | (__|   < 
-|_|   |_|_| |_|\__, |\___|_|  |_____\___/ \___|_|\_\
-               |___/                                 
-        Sécurité par Reconnaissance de Doigts
-        ======================================
-
-  🎉 Bienvenue dans FingerLock !
-
-  Configuration initiale :
-
-  ⏱️  Délai d'inactivité avant verrouillage (en secondes) [10] : 15
-
-  ✅ Configuration sauvegardée dans : /home/user/.fingerlock/config.yaml
-  📝 Délai configuré : 15 secondes
+### Étape 1 : Dessinez votre schéma
+```
+┌─────────────────────────────────┐
+│     🎨  Configuration          │
+│                                 │
+│   ┌───┬───┬───┐                │
+│   │ 1 │ 2 │ 3 │                │
+│   ├───┼───┼───┤                │
+│   │ 4 │ 5 │ 6 │  ← Glissez     │
+│   ├───┼───┼───┤     la souris  │
+│   │ 7 │ 8 │ 9 │                │
+│   └───┴───┴───┘                │
+│                                 │
+│       ✅  Valider               │
+└─────────────────────────────────┘
 ```
 
-La surveillance démarre automatiquement !
+**Exemple :** Tracez `7 → 5 → 3` = schéma diagonal
+
+### Étape 2 : Confirmez le schéma
+
+Redessinez le même schéma pour valider.
+
+### Étape 3 : Délai d'inactivité
+```
+⏱️  Délai avant verrouillage (secondes) [10] : 30
+```
+
+**C'est tout ! La surveillance démarre. 🎉**
+
+---
+
+## 🎮 Utilisation
 
 ### Commandes disponibles
 ```bash
-# Démarrer la surveillance (commande par défaut)
+# Démarrer la surveillance (défaut)
 fingerlock
 fingerlock start
 
-# Avec un délai personnalisé (override la config)
-fingerlock start -d 30
+# Avec délai personnalisé
+fingerlock start -d 60        # 60 secondes
 
-# Voir la configuration actuelle
+# Voir la config actuelle
 fingerlock config
 
 # Éditer la configuration
 fingerlock config --edit
 
-# Afficher l'état du système
+# Réinitialiser le schéma
+fingerlock reset
+
+# État du système
 fingerlock status
 
-# Voir les logs
+# Consulter les logs
 fingerlock logs
-fingerlock logs -n 50  # 50 dernières lignes
+fingerlock logs -n 100        # 100 dernières lignes
 ```
 
 ### Arrêter la surveillance
 
-Appuyez sur **Ctrl+C** dans le terminal où tourne FingerLock.
+`Ctrl+C` dans le terminal
+
+---
+
+## 🔓 Déverrouillage
+
+Après inactivité, l'écran de lock apparaît :
+```
+┌──────────────────────────────────────────┐
+│                                          │
+│           ⏰  14:35:22                   │
+│        Mardi 18 Février 2026            │
+│                                          │
+│      🔒  Système verrouillé             │
+│                                          │
+│         7 → 5 → 3  ← Schéma actuel      │
+│                                          │
+│    ┌───┬───┬───┐                        │
+│    │ 1 │ 2 │ 3 │   Glissez votre       │
+│    ├───┼───┼───┤   schéma sur les      │
+│    │ 4 │ 5 │ 6 │   points, puis        │
+│    ├───┼───┼───┤   passez sur ✅       │
+│    │ 7 │ 8 │ 9 │                        │
+│    └───┴───┴───┘                        │
+│                                          │
+│         ✅  Valider                      │
+│                                          │
+│      Tentative 1/3                      │
+└──────────────────────────────────────────┘
+```
+
+**3 tentatives max** puis arrêt du programme.
 
 ---
 
 ## ⚙️ Configuration
 
-Le fichier de configuration est situé dans `~/.fingerlock/config.yaml` :
+Fichier : `~/.fingerlock/config.yaml`
 ```yaml
-# Délai d'inactivité en secondes
-lock_delay_seconds: 10
+# Délai d'inactivité (secondes)
+lock_delay_seconds: 30
 
-# Plateforme de verrouillage (auto-détection)
-platform_lock: auto
+# Schéma (hashé SHA-256)
+pattern_hash: d6a69166d21ee0c8a97327cb142adee2201749599f194a27453fc23edc0cde07
+pattern_code: '12369'  # Pour debug uniquement
 
-# Fichier de logs
+# Logs
 log_path: /home/user/.fingerlock/fingerlock.log
+
+# Plateforme (auto)
+platform_lock: auto
 ```
 
-**Modifier la configuration :**
+**Modifier :**
 ```bash
 fingerlock config --edit
-```
-
-Ou directement :
-```bash
 nano ~/.fingerlock/config.yaml
 ```
 
 ---
 
-## 🖥️ Compatibilité Plateformes
+## 🖥️ Compatibilité
 
-### Linux
+### ✅ Linux
 
-**Gestionnaires de sessions supportés :**
-- GNOME (gnome-screensaver)
-- KDE Plasma
-- XFCE
-- i3wm (i3lock)
-- Sway (swaylock)
-- Xscreensaver
+| Distribution | Version | Statut |
+|--------------|---------|--------|
+| Ubuntu | 20.04+ | ✅ Testé |
+| Debian | 11+ | ✅ Compatible |
+| Fedora | 35+ | ✅ Compatible |
+| Arch Linux | Rolling | ✅ Compatible |
+| Pop!_OS | 22.04+ | ✅ Testé |
 
-**Installation du backend de verrouillage :**
+**Sessions supportées :**
+- 🌊 **Wayland** (via `evdev`) ✅
+- 🪟 **X11** (via `evdev`) ✅
+
+**Environnements de bureau :**
+- GNOME, KDE Plasma, XFCE, i3wm, Sway
+
+**Prérequis Linux :**
 ```bash
-# GNOME (Ubuntu standard)
-sudo apt install gnome-screensaver
-
-# X11 générique
-sudo apt install xscreensaver
-
-# i3wm
-sudo apt install i3lock
-
-# Sway (Wayland)
-sudo apt install swaylock
+# Ajouter utilisateur au groupe input (si pas déjà fait)
+sudo usermod -aG input $USER
+# Redémarrer la session
 ```
 
-### macOS
+### ⚠️ macOS
 
-Utilise la commande système native. Aucune configuration requise.
+**Statut :** En cours de développement
+- Détection d'activité : ⚠️ Limitations macOS
+- Lock screen : ✅ Compatible
 
-**Permissions nécessaires :**
-- Accessibilité (pour détecter clavier/souris)
+### ⚠️ Windows
 
-### Windows
-
-Utilise `rundll32` natif. Aucune configuration requise.
+**Statut :** En cours de développement
+- Détection d'activité : ⚠️ Nécessite adaptations
+- Lock screen : ✅ Compatible
 
 ---
 
-## 📊 Logs
-
-Les événements sont enregistrés dans `~/.fingerlock/fingerlock.log` :
+## 📊 Exemple de logs
+```log
+2026-02-18T09:37:14 | INFO  | [09:37:14] ℹ️  SYSTEM  Surveillance démarrée
+2026-02-18T09:37:14 | INFO  | [09:37:14] 📡 SYSTEM  11 périphériques détectés
+2026-02-18T09:38:38 | WARN  | [09:38:38] 🔒 LOCK    Verrouillage après 30s
+2026-02-18T09:38:48 | INFO  | [09:38:48] ℹ️  SYSTEM  Système déverrouillé
 ```
-2025-02-16T16:27:00 | INFO     | [16:27:00] ℹ️  SYSTEM     Surveillance inputs démarrée
-2025-02-16T16:27:15 | WARNING  | [16:27:15] 🔒 LOCK       Verrouillage après 10s d'inactivité
-2025-02-16T16:27:20 | INFO     | [16:27:20] ℹ️  SYSTEM     Système déverrouillé
-```
-
-**Catégories d'événements :**
-- `SYSTEM` — Démarrage, arrêt, configuration
-- `LOCK` — Verrouillages automatiques
-- `ERROR` — Erreurs techniques
 
 ---
 
-## 🔧 Développement
+## 🛠️ Développement
 
-### Cloner et installer en mode dev
+### Cloner le projet
 ```bash
 git clone https://github.com/REBCDR07/fingerlock.git
 cd fingerlock
+```
+
+### Installer en mode dev
+```bash
 python3 -m venv venv
-source venv/bin/activate  # Linux/macOS
-# venv\Scripts\activate   # Windows
+source venv/bin/activate
 pip install -e .
 fingerlock
 ```
@@ -234,123 +278,145 @@ fingerlock
 fingerlock/
 ├── fingerlock/
 │   ├── __init__.py
-│   ├── cli.py           # Point d'entrée CLI
+│   ├── cli.py                 # Interface CLI
 │   ├── core/
-│   │   ├── watch.py     # Boucle de surveillance
-│   │   └── locker.py    # Verrouillage cross-plateforme
+│   │   ├── watch.py           # Surveillance evdev
+│   │   ├── lockscreen.py      # UI plein écran
+│   │   ├── pattern_gui.py     # Setup schéma
+│   │   └── locker.py          # Verrouillage système
 │   ├── utils/
-│   │   └── logger.py    # Journalisation
+│   │   └── logger.py          # Journalisation
 │   └── config/
+│       └── settings.py        # Config YAML
 ├── setup.py
 ├── README.md
 └── LICENSE
 ```
 
-### Tests
-```bash
-# Tester la détection d'activité
-fingerlock start -d 5
+### Contribuer
 
-# Vérifier les logs
-fingerlock logs -n 20
-```
+1. Fork le projet
+2. Créez une branche (`git checkout -b feature/ma-feature`)
+3. Committez (`git commit -m 'Ajout feature X'`)
+4. Push (`git push origin feature/ma-feature`)
+5. Ouvrez une Pull Request
 
 ---
 
 ## 🆘 Dépannage
 
 ### ❌ "Commande 'fingerlock' introuvable"
-
-**Solution :**
 ```bash
-# Vérifier que pipx est dans le PATH
 pipx ensurepath
 source ~/.bashrc
-
-# Réinstaller
 pipx reinstall fingerlock
 ```
 
-### ❌ "ModuleNotFoundError: No module named 'fingerlock'"
-
-**Solution :**
+### ❌ "Aucun périphérique input accessible"
 ```bash
-pipx uninstall fingerlock
-pipx install git+https://github.com/REBCDR07/fingerlock.git
+# Vérifier le groupe input
+groups $USER | grep input
+
+# Si absent :
+sudo usermod -aG input $USER
+# Redémarrer la session (logout/login)
 ```
 
-### ❌ Verrouillage ne fonctionne pas (Linux)
-
-**Solution :**
+### ❌ "Events détectés: 0" (ne détecte pas l'activité)
 ```bash
-# Tester manuellement
-gnome-screensaver-command -l
+# Vérifier les permissions /dev/input
+ls -la /dev/input/event*
+
+# Doivent être lisibles par le groupe 'input'
+# Si problème, redémarrer après avoir ajouté au groupe
+```
+
+### ❌ Lock screen ne s'affiche pas
+```bash
+# Vérifier tkinter
+python3 -c "import tkinter; print('OK')"
 
 # Si erreur, installer :
-sudo apt install gnome-screensaver
+sudo apt install python3-tk
 ```
 
-### ❌ Détection clavier/souris ne fonctionne pas
+### ❌ Sons ne fonctionnent pas
 
-**Linux :** Vérifiez que votre utilisateur a les permissions :
-```bash
-# Ajouter au groupe input
-sudo usermod -aG input $USER
-# Redémarrer la session
-```
-
-**macOS :** Autorisez l'accès "Accessibilité" dans :
-```
-Préférences Système → Sécurité → Confidentialité → Accessibilité
-```
-
----
-
-## 🤝 Contribuer
-
-Les contributions sont les bienvenues !
-
-1. Fork le projet
-2. Créez une branche (`git checkout -b feature/amelioration`)
-3. Committez vos changements (`git commit -m 'Ajout fonctionnalité X'`)
-4. Push vers la branche (`git push origin feature/amelioration`)
-5. Ouvrez une Pull Request
+Normal ! Les sons utilisent `paplay` (PulseAudio). Si absent, FingerLock fonctionne sans sons.
 
 ---
 
 ## 📜 Licence
 
-Ce projet est sous licence MIT. Voir le fichier [LICENSE](LICENSE) pour plus de détails.
+**MIT License** — Voir [LICENSE](LICENSE)
+
+Copyright © 2026 Elton Ronald Bill HOUNNOU
 
 ---
 
 ## 👤 Auteur
 
-**Elton Ronald Bill Hounnou**
+### **Elton Ronald Bill HOUNNOU**
 
-- GitHub: [@VOTRE-USERNAME](https://github.com/REBCDR07)
-- Email: eltonhounnou27@gmail.com
+🚀 **Développeur Frontend** | Passionné par la Tech & l'IA
+
+- 🌐 **LinkedIn** : [in/elton27](https://linkedin.com/in/elton27)
+- 💻 **GitHub** : [REBCDR07](https://github.com/REBCDR07)
+- 🦊 **GitLab** : [eltonhounnou2](https://gitlab.com/eltonhounnou2)
+- 📧 **Email** : [eltonhounnou27@gmail.com](mailto:eltonhounnou27@gmail.com)
+- 📱 **Téléphone** : +229 01 40 66 33 49
 
 ---
 
 ## 🙏 Remerciements
 
-- [pynput](https://github.com/moses-palmer/pynput) — Détection clavier/souris
-- [opencv-python](https://github.com/opencv/opencv-python) — Traitement vidéo (versions antérieures)
+- [evdev](https://github.com/gvalkov/python-evdev) — Détection d'activité Linux native
+- [tkinter](https://docs.python.org/3/library/tkinter.html) — Interface graphique
+- Communauté Python 🐍
+
+---
+
+## 📈 Roadmap
+
+- [ ] Support macOS natif (via Quartz)
+- [ ] Support Windows (via pywin32)
+- [ ] Mode daemon (lancement au boot)
+- [ ] Interface de configuration graphique
+- [ ] Multi-utilisateurs
+- [ ] Thèmes personnalisables
+- [ ] Export/Import de configuration
 
 ---
 
 ## 📝 Changelog
 
-### Version 1.0.0 (2026-02-16)
+### v2.0.0 (2026-02-18) — Lock Screen Premium
 
-- 🎉 Release initiale
-- ⌨️ Détection clavier et souris
-- 🔒 Verrouillage automatique multi-plateforme
-- 📊 Système de logs
-- ⚙️ Configuration interactive
-- 📦 Package pip installable
+- ✨ **Lock screen plein écran** animé avec dégradé
+- 🎯 **Schéma 3×3** (1-9) avec tracé souris sans clic
+- 🔊 **Sons** (bips sur points, erreur, succès)
+- ⏰ **Horloge temps réel** + date
+- ⚡ **Détection evdev** (compatible Wayland)
+- 📊 **Debug mode** avec compteur d'events
+- 🎨 **Animations** (pulse points, lignes progressives)
+
+### v1.0.0 (2026-02-16) — Release Initiale
+
+- 🎉 Première version publique
+- ⌨️ Détection clavier/souris (pynput)
+- 🔒 Verrouillage automatique
+- 📦 Package PyPI
 
 ---
 
-**⭐ Si ce projet vous est utile, n'hésitez pas à lui donner une étoile sur GitHub !**
+**⭐ Si FingerLock vous est utile, donnez une étoile sur [GitHub](https://github.com/REBCDR07/fingerlock) !**
+
+---
+
+<div align="center">
+  
+**Made with ❤️ by Elton HOUNNOU**
+
+[🐛 Reporter un bug](https://github.com/REBCDR07/fingerlock/issues) • [✨ Demander une feature](https://github.com/REBCDR07/fingerlock/issues) • [💬 Discussions](https://github.com/REBCDR07/fingerlock/discussions)
+
+</div>
