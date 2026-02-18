@@ -390,7 +390,7 @@ Copyright © 2026 Elton Ronald Bill HOUNNOU
 
 ## 📝 Changelog
 
-### v2.0.0 (2026-02-18) — Lock Screen Premium
+### v2.0.0 & v2.1.0 (2026-02-18) — Lock Screen Premium
 
 - ✨ **Lock screen plein écran** animé avec dégradé
 - 🎯 **Schéma 3×3** (1-9) avec tracé souris sans clic
@@ -415,7 +415,7 @@ Copyright © 2026 Elton Ronald Bill HOUNNOU
 
 <div align="center">
   
-**Made with ❤️ by Elton HOUNNOU**
+**Made with ❤️ by Elton Ronald Bill HOUNNOU**
 
 [🐛 Reporter un bug](https://github.com/REBCDR07/fingerlock/issues) • [✨ Demander une feature](https://github.com/REBCDR07/fingerlock/issues) • [💬 Discussions](https://github.com/REBCDR07/fingerlock/discussions)
 

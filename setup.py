@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as f:
 
 setup(
     name="fingerlock",
-    version="2.0.0",
+    version="2.1.2",
     author="Elton Hounnou",
     description="Sécurité automatique par détection d'activité clavier/souris",
     long_description=long_description,
@@ -14,6 +14,7 @@ setup(
     python_requires=">=3.8",
     install_requires=[
         "pynput>=1.7.0",
+        "evdev>=1.6.0; sys_platform == 'linux'",
         "evdev>=1.6.0; sys_platform == 'linux'",
         "PyYAML>=5.4.0",
         "setuptools>=69.0.0",
